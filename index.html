@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="Hermes: Universal Medical Image Segmentation">
+  <meta name="keywords" content="Universal Medical Image Segmentation, Medical Foundation Model">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Training Like a Medical Resident: Context-Prior Learning Toward Universal Medical Image Segmentation</title>
+  <link rel="icon" type="image/x-icon" href="static/figs/Hermes.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Training Like a Medical Resident: Universal Medical Image Segmentation via Context Prior Learning</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+               Yunhe Gao</a><sup>1</sup>&#8192;
+              </span>
+              <span class="author-block">
+                Zhuowei Li</a><sup>1</sup>&#8192;
+               </span>
+              <span class="author-block">
+               Di Liu</a><sup>1</sup>&#8192;
+              </span>
+              <span class="author-block">
+               Mu Zhou</a><sup>1</sup>&#8192;
+              </span>
+              <span class="author-block">
+               Shaoting Zhang</a><sup>2</sup>&#8192;
+              </span>
+              <span class="author-block">
+               Dimitris N. Metaxas</a><sup>1</sup>&#8192;
+              </span>
+            <div class="is-size-5 publication-authors">
+              <span><sup>1</sup>Rutgers University</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span><sup>2</sup>Shanghai Artificial Intelligence Laboratory&#8192;</span>
+            </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <p align="center">
+            <a><img src="static/figs/logo.png" width="600" ></a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2306.02416.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>PDF</span>
+                      </a>
+                    </span>
+                
+                    <!-- ArXiv abstract Link -->
+                    <span class="link-block">
+                      <a href="https://arxiv.org/abs/2306.02416" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="ai ai-arxiv"></i>
+                        </span>
+                        <span>ArXiv</span>
+                      </a>
+                    </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/yhygao/universal-medical-image-segmentation" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div align='center'>
+          <a><img src="static/figs/training_paradigm.png" width="95%" height="100%"  ></a>
+      </div>
+      <div class="content has-text-justified">
+         Clinical diagnostic workflows typically focus on specific specialties and diseases, leading to the curation of image datasets that are partially annotated, multi-modal, and multi-regional. Traditional training paradigms involve training separate models for each segmentation task (or dataset). In this study, we emphasize a universal medical image segmentation paradigm aiming at <b>one model for all</b>, leading to a robust and generalizable universal model for diverse tasks.
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            A major enduring focus of clinical workflows is disease analytics and diagnosis, leading to medical imaging datasets where the modalities and annotations are strongly tied to specific clinical objectives. To date, building task-specific segmentation models is intuitive yet a restrictive approach, lacking insights gained from widespread imaging cohorts. Inspired by the training of medical residents, we explore universal medical image segmentation, whose goal is to learn from diverse medical imaging sources covering a range of clinical targets, body regions, and image modalities. Following this paradigm, we propose Hermes, a context prior learning approach that addresses the challenges related to the heterogeneity on data, modality, and annotations in the proposed universal paradigm. In a collection of seven diverse datasets, we demonstrate the appealing merits of the universal paradigm over the traditional task-specific training paradigm. By leveraging the synergy among various tasks, Hermes shows superior performance and model scalability. Our in-depth investigation on two additional datasets reveals Hermes' strong capabilities for transfer learning, incremental learning, and generalization to different downstream tasks.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Image carousel -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div align='center'>
+          <a><img src="static/figs/framework.png"  width="95%" height="100%" ></a>
+        </div>
+        <div class="content has-text-justified">
+           Illustration of Hermes. A context prior knowledge pool, including task and modality priors, is learned with the segmentation backbone. Through oracle-guided selection and combination of these priors, Hermes can address a variety of segmentation tasks and image modalities.
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{gao2023training,
+        title={Training Like a Medical Resident: Universal Medical Image Segmentation via Context Prior Learning},
+        author={Gao, Yunhe and Li, Zhuowei and Liu, Di and Zhou, Mu and Zhang, Shaoting and Meta, Dimitris N},
+        journal={arXiv preprint arXiv:2306.02416},
+        year={2023}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
