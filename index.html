@@ -2,15 +2,14 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="Hermes: Universal Medical Image Segmentation">
-  <meta name="keywords" content="Universal Medical Image Segmentation, Medical Foundation Model">
+  <!-- Meta tags for social media banners -->
+  <meta name="description" content="MASS: Learning Generalizable 3D Medical Image Representations from Mask-Guided Self-Supervision">
+  <meta name="keywords" content="Self-Supervised Learning, Medical Image Analysis, 3D Medical Imaging, Foundation Model, Segmentation, In-Context Learning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Training Like a Medical Resident: Context-Prior Learning Toward Universal Medical Image Segmentation</title>
-  <link rel="icon" type="image/x-icon" href="static/figs/Hermes.ico">
+  <title>MASS: Learning Generalizable 3D Medical Image Representations from Mask-Guided Self-Supervision</title>
+  <link rel="icon" type="image/x-icon" href="static/figs/MASS.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -37,39 +36,47 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Training Like a Medical Resident: Universal Medical Image Segmentation via Context Prior Learning</h1>
+            <h1 class="title is-1 publication-title">Learning Generalizable 3D Medical Image Representations from Mask-Guided Self-Supervision</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-               Yunhe Gao</a><sup>1</sup>&#8192;
+               Yunhe Gao</a>&#8192;
               </span>
               <span class="author-block">
-                Zhuowei Li</a><sup>1</sup>&#8192;
+                Yabin Zhang</a>&#8192;
                </span>
               <span class="author-block">
-               Di Liu</a><sup>1</sup>&#8192;
+               Chong Wang</a>&#8192;
               </span>
               <span class="author-block">
-               Mu Zhou</a><sup>1</sup>&#8192;
+               Jiaming Liu</a>&#8192;
               </span>
               <span class="author-block">
-               Shaoting Zhang</a><sup>2</sup>&#8192;
+               Maya Varma</a>&#8192;
               </span>
               <span class="author-block">
-               Dimitris N. Metaxas</a><sup>1</sup>&#8192;
+               Jean-Benoit Delbrouck</a>&#8192;
               </span>
-            <div class="is-size-5 publication-authors">
-              <span><sup>1</sup>Rutgers University</span>
+              <span class="author-block">
+               Akshay Chaudhari</a>&#8192;
+              </span>
+              <span class="author-block">
+               Curtis Langlotz</a>&#8192;
+              </span>
             </div>
             <div class="is-size-5 publication-authors">
-              <span><sup>2</sup>Shanghai Artificial Intelligence Laboratory&#8192;</span>
+              <span>Stanford University</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span><b>CVPR 2026</b></span>
             </div>
 
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column is-full-width">
-          <p align="center">
-            <a><img src="static/figs/logo.png" width="600" ></a>
+          <p align="center" style="display: flex; justify-content: center; align-items: center; gap: 60px;">
+            <a><img src="static/figs/stanford-logo.png" style="height: 140px; width: auto;" ></a>
+            <a><img src="static/figs/aimi-logo.png" style="height: 220px; width: auto;" ></a>
           </p>
         </div>
       </div>
@@ -79,7 +86,7 @@
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/2306.02416.pdf" target="_blank"
+                        <a href="https://arxiv.org/pdf/2603.13660" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -90,7 +97,7 @@
                 
                     <!-- ArXiv abstract Link -->
                     <span class="link-block">
-                      <a href="https://arxiv.org/abs/2306.02416" target="_blank"
+                      <a href="https://arxiv.org/abs/2603.13660" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="ai ai-arxiv"></i>
@@ -101,7 +108,7 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/yhygao/universal-medical-image-segmentation" target="_blank"
+                    <a href="https://github.com/Stanford-AIMI/MASS" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -124,10 +131,10 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div align='center'>
-          <a><img src="static/figs/training_paradigm.png" width="95%" height="100%"  ></a>
+          <a><img src="static/figs/framework.jpg" width="95%" height="100%"  ></a>
       </div>
       <div class="content has-text-justified">
-         Clinical diagnostic workflows typically focus on specific specialties and diseases, leading to the curation of image datasets that are partially annotated, multi-modal, and multi-regional. Traditional training paradigms involve training separate models for each segmentation task (or dataset). In this study, we emphasize a universal medical image segmentation paradigm aiming at <b>one model for all</b>, leading to a robust and generalizable universal model for diverse tasks.
+         <b>MASS framework overview.</b> (A) <b>Annotation-free mask generation</b>: SAM2 generates class-agnostic masks by sampling 2D slices from unlabeled 3D images, applying automatic segmentation, and propagating masks through volumes. (B) <b>Mask-guided self-supervised learning</b>: For each training step, we sample an image and its auto-generated masks, then create two augmented views: a <i>reference</i> and a <i>query</i>. The model extracts a task embedding from the reference mask and uses it to predict the corresponding region in the query view. By solving many such in-context segmentation tasks, the model learns generalizable, semantically rich representations.
       </div>
     </div>
   </div>
@@ -142,7 +149,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            A major enduring focus of clinical workflows is disease analytics and diagnosis, leading to medical imaging datasets where the modalities and annotations are strongly tied to specific clinical objectives. To date, building task-specific segmentation models is intuitive yet a restrictive approach, lacking insights gained from widespread imaging cohorts. Inspired by the training of medical residents, we explore universal medical image segmentation, whose goal is to learn from diverse medical imaging sources covering a range of clinical targets, body regions, and image modalities. Following this paradigm, we propose Hermes, a context prior learning approach that addresses the challenges related to the heterogeneity on data, modality, and annotations in the proposed universal paradigm. In a collection of seven diverse datasets, we demonstrate the appealing merits of the universal paradigm over the traditional task-specific training paradigm. By leveraging the synergy among various tasks, Hermes shows superior performance and model scalability. Our in-depth investigation on two additional datasets reveals Hermes' strong capabilities for transfer learning, incremental learning, and generalization to different downstream tasks.
+            Foundation models have transformed vision and language by learning general-purpose representations from large-scale unlabeled data, yet 3D medical imaging lacks analogous approaches. Existing self-supervised methods rely on low-level reconstruction or contrastive objectives that fail to capture the anatomical semantics critical for medical image analysis, limiting transfer to downstream tasks. We present <b>MASS</b> (<b>MA</b>sk-guided <b>S</b>elf-<b>S</b>upervised learning), which treats in-context segmentation as the pretext task for learning general-purpose medical imaging representations. MASS's key insight is that automatically generated class-agnostic masks provide sufficient structural supervision for learning semantically rich representations. By training on thousands of diverse mask proposals spanning anatomical structures and pathological findings, MASS learns what semantically defines medical structures: the holistic combination of appearance, shape, spatial context, and anatomical relationships. We demonstrate effectiveness across data regimes: from small-scale pretraining on individual datasets (20–200 scans) to large-scale multi-modal pretraining on 5K CT, MRI, and PET volumes, all without annotations. MASS demonstrates: (i) few-shot segmentation on novel structures, (ii) matching full supervision with only 20–40% labeled data while outperforming self-supervised baselines by over 20 in Dice score in low-data regimes, and (iii) frozen-encoder classification on unseen pathologies that matches full supervised training with thousands of samples. Mask-guided self-supervised pretraining captures broadly generalizable knowledge, opening a path toward 3D medical imaging foundation models without expert annotations.
           </p>
         </div>
       </div>
@@ -152,30 +159,151 @@
 <!-- End paper abstract -->
 
 
-<!-- Image carousel -->
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <div align='center'>
-          <a><img src="static/figs/framework.png"  width="95%" height="100%" ></a>
+<!-- Highlights -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem;">Highlights</h2>
+
+    <!-- Row 1: 2 cards -->
+    <div class="columns is-centered" style="margin-bottom: 0.5rem;">
+      <div class="column is-half">
+        <div style="background: #f5f5f5; border-radius: 12px; padding: 1.5rem; height: 100%; border-left: 4px solid #8c1515;">
+          <p style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">🚫 Zero Expert Annotation</p>
+          <p style="font-size: 0.95rem; color: #444;">
+            MASS uses <b>in-context segmentation</b> as the pretext task with auto-generated class-agnostic masks. No expert annotation cost — yet achieves performance comparable to supervised pretraining, and <b>substantially outperforms</b> reconstruction and contrastive SSL methods.
+          </p>
         </div>
-        <div class="content has-text-justified">
-           Illustration of Hermes. A context prior knowledge pool, including task and modality priors, is learned with the segmentation backbone. Through oracle-guided selection and combination of these priors, Hermes can address a variety of segmentation tasks and image modalities.
+      </div>
+      <div class="column is-half">
+        <div style="background: #f5f5f5; border-radius: 12px; padding: 1.5rem; height: 100%; border-left: 4px solid #8c1515;">
+          <p style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">🧠 In-Context Medical Knowledge</p>
+          <p style="font-size: 0.95rem; color: #444;">
+            Like LLMs that acquire language understanding through pretraining, MASS acquires <b>medical knowledge</b> (anatomy, morphology, spatial relationships) during self-supervised pretraining — enabling <b>few-shot segmentation directly out of the box</b>, without any finetuning.
+          </p>
         </div>
       </div>
     </div>
-  </section>
+
+    <!-- Row 2: 3 cards -->
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <div style="background: #f5f5f5; border-radius: 12px; padding: 1.5rem; height: 100%; border-left: 4px solid #8c1515;">
+          <p style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">📈 Scalable Across Data Regimes</p>
+          <p style="font-size: 0.95rem; color: #444;">
+            Effective from <b>20 scans</b> to <b>5K multi-modal</b> CT, MRI, and PET volumes, with consistent improvements as data scale and diversity increase.
+          </p>
+        </div>
+      </div>
+      <div class="column is-one-third">
+        <div style="background: #f5f5f5; border-radius: 12px; padding: 1.5rem; height: 100%; border-left: 4px solid #8c1515;">
+          <p style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">🎯 Few-Shot Power</p>
+          <p style="font-size: 0.95rem; color: #444;">
+            With only <b>20–40%</b> labeled data, MASS matches full supervision and outperforms all prior SSL methods by <b>&gt;20 Dice points</b> in low-data regimes.
+          </p>
+        </div>
+      </div>
+      <div class="column is-one-third">
+        <div style="background: #f5f5f5; border-radius: 12px; padding: 1.5rem; height: 100%; border-left: 4px solid #8c1515;">
+          <p style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">🔄 Broad Generalization</p>
+          <p style="font-size: 0.95rem; color: #444;">
+            Frozen-encoder classification on <b>unseen pathologies</b> matches fully supervised training with thousands of labeled samples — knowledge transfers <b>beyond segmentation</b>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- End Highlights -->
+
+
+<!-- In-Context Medical Knowledge -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">In-Context Medical Knowledge from Self-Supervision</h2>
+        <div class="content has-text-justified">
+          <p>
+            Like LLMs that acquire language understanding through pretraining on unlabeled text, MASS acquires <b>medical imaging knowledge</b> — anatomy, morphology, spatial relationships — entirely through self-supervised pretraining on auto-generated masks. <b>No expert annotations. No supervised finetuning.</b> The pretrained model can directly perform few-shot in-context segmentation out of the box.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-body" style="padding-top: 0;">
+      <div align='center'>
+        <a><img src="static/figs/incontext_knowledge.png" width="95%" height="100%" ></a>
+      </div>
+      <div class="content has-text-justified" style="margin-top: 1rem;">
+        <p>
+          <b>Probing learned knowledge through one-shot in-context inference with the MASS pretrained model (no finetuning).</b> Just as LLMs learn language understanding by predicting tokens on unlabeled text, MASS learns medical imaging understanding by predicting masks on unlabeled scans. After pretraining, the model has internalized broad medical knowledge — given just a single reference image-mask pair, it segments novel structures across diverse body regions (abdomen, head &amp; neck, thorax, pelvis, cardiac) and modalities (CT, MRI) <b>without ever seeing expert annotations</b>. This mirrors the LLM paradigm: <b>pretrain</b> on large-scale unlabeled data to acquire general knowledge, then <b>align</b> with minimal expert supervision for downstream deployment.  
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End In-Context Medical Knowledge -->
+
+
+<!-- Feature Visualization -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Visualization of Learned Representations</h2>
+        <div class="content has-text-justified">
+          <p>
+            We visualize what MASS learns by extracting decoder output features from the pretrained model (<b>without any finetuning</b>) and reducing to 3 channels via PCA for RGB visualization. The results reveal rich, hierarchical anatomical understanding learned entirely from mask-guided self-supervision.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div align='center'>
+      <a><img src="static/figs/pca.png" width="95%" height="100%" ></a>
+    </div>
+    <div class="content has-text-justified" style="margin-top: 1rem;">
+      <div class="columns">
+        <div class="column is-one-third">
+          <div style="background: #f5f5f5; border-radius: 10px; padding: 1.2rem;">
+            <p style="font-weight: 700; margin-bottom: 0.3rem;">🔍 Clear Anatomical Boundaries</p>
+            <p style="font-size: 0.92rem; color: #444;">
+              Sharp delineation of organs (kidneys, liver, spleen, heart, lungs), skeletal structures (mandible, skull), and soft tissue compartments (muscles, fat).
+            </p>
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div style="background: #f5f5f5; border-radius: 10px; padding: 1.2rem;">
+            <p style="font-weight: 700; margin-bottom: 0.3rem;">🎨 Semantic Consistency</p>
+            <p style="font-size: 0.92rem; color: #444;">
+              Semantically similar structures share consistent feature patterns — e.g., bilateral kidneys exhibit matching representations, indicating learned semantic concepts, not spatial templates.
+            </p>
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div style="background: #f5f5f5; border-radius: 10px; padding: 1.2rem;">
+            <p style="font-weight: 700; margin-bottom: 0.3rem;">🔬 Multi-Granular Understanding</p>
+            <p style="font-size: 0.92rem; color: #444;">
+              Beyond large organs, MASS captures fine-grained sub-anatomical details: pulmonary vasculature, hepatic vessels, and distinct cardiac chambers — multi-scale knowledge from diverse auto-generated masks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Feature Visualization -->
+
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@article{gao2023training,
-        title={Training Like a Medical Resident: Universal Medical Image Segmentation via Context Prior Learning},
-        author={Gao, Yunhe and Li, Zhuowei and Liu, Di and Zhou, Mu and Zhang, Shaoting and Meta, Dimitris N},
-        journal={arXiv preprint arXiv:2306.02416},
-        year={2023}
-}</code></pre>
+      <pre><code>@article{gao2026learning,
+        title={Learning Generalizable 3D Medical Image Representations from Mask-Guided Self-Supervision},
+        author={Gao, Yunhe and Zhang, Yabin and Wang, Chong and Liu, Jiaming and Varma, Maya and Delbrouck, Jean-Benoit and Chaudhari, Akshay and Langlotz, Curtis},
+        journal={arXiv preprint arXiv:2603.13660},
+        year={2026}
+      }</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
